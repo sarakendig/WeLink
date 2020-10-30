@@ -2,18 +2,20 @@
 <html lang="en" dir="ltr">
 
 <head>
+    <%- include ('../partials/head.ejs') %>
 </head>
 
 <body>
     <nav>
+        <%- include ('../partials/nav.ejs') %>
     </nav>
     <div class="container">
         <h1>Message Show Page</h1>
-        <%=message.title%> 
-        <%=message.body%>
-        <%=message.image%>
+        <h3> <%=message.title%> </h3>
+        <p><%=message.body%></p>
+        <img src="<%=message.image%>">
 
-     
+
         <br>
         <button type="button" name="button"><a href="/messages/<%=message._id%>/edit">Edit</a></button>
         <br>

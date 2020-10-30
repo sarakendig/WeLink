@@ -2,7 +2,13 @@ const express = require('express')
 const Message = require('../models/messages.js')
 const messages = express.Router()
 
-
+const isAuthenticated = (req, res, next) => {
+    if (req.session.currentUser) {
+        return next()
+    } else {
+        res.redirect('/sessions/new')
+    }
+}
 
 // NEW
 messages.get('/new', (req, res) => {
@@ -23,7 +29,7 @@ messages.get('/:id/edit', (req, res) => {
 })
 
 // DELETE
-messages.delete('/:id', (req, res) => {
+messages.delete('/:id', isAuthenticated, (req, res) => {
     Message.findByIdAndRemove(req.params.id, (err, deletedMessage) => {
         res.redirect('/messages')
     })
@@ -31,16 +37,20 @@ messages.delete('/:id', (req, res) => {
 
 // SHOW
 messages.get('/:id', (req, res) => {
-    Message.findById(req.params.id, (error, foundMessage) => {
-        res.render('messages/show.ejs', {
-            Message: foundMessage,
-            currentUser: req.session.currentUser
+    if (req.session.currentUser) {
+        Message.findById(req.params.id, (error, foundMessage) => {
+            res.render('messages/show.ejs', {
+                message: foundMessage,
+                currentUser: req.session.currentUser
+            })
         })
-    })
+    } else {
+        res.redirect('/sessions/new')
+    }
 })
 
 // UPDATE
-messages.put('/:id', (req, res) => {
+messages.put('/:id', isAuthenticated, (req, res) => {
     Message.findByIdAndUpdate(
         req.params.id,
         req.body, {

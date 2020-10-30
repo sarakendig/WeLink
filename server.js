@@ -13,7 +13,7 @@ require('dotenv').config()
 //Port
 //___________________
 // Allow use of Heroku's port or your own local port, depending on the environment
-const PORT = process.env.PORT || 3005;
+const PORT = process.env.PORT;
 
 //___________________
 //Database
@@ -29,7 +29,7 @@ mongoose.connect(
         useFindAndModify: false
     },
     () => {
-        console.log('the connection with mongod is established at', mongodbURI)
+        console.log('the connection with mongod is established at', mongodb_URI)
     }
 )
 
@@ -83,8 +83,8 @@ app.use('/sessions', sessionsController)
 //___________________
 // Routes
 //___________________
-//localhost:3000
-app.get('/', (req, res) => {
+//localhost:3005
+app.get('/messages', (req, res) => {
     res.send('Hello 🌎! ');
 });
 

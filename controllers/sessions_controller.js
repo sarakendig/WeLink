@@ -16,7 +16,7 @@ sessions.post('/', (req, res) => {
     }, (error, foundUser) => {
         if (error) {
             console.log(error)
-            res.send('There was an issue with the DB')
+            res.send('DB issue!')
         } else if (!foundUser) {
             res.send('<a href="/">Sorry, no user found</a>')
         } else {
