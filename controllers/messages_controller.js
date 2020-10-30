@@ -4,13 +4,76 @@ const messages = express.Router()
 
 
 
+// NEW
+messages.get('/new', (req, res) => {
+    res.render(
+        'messages/new.ejs', {
+            currentUser: req.session.currentUser
+        })
+})
 
+// EDIT
+messages.get('/:id/edit', (req, res) => {
+    Message.findById(req.params.id, (error, foundMessage) => {
+        res.render('messages/edit.ejs', {
+            message: foundMessage,
+            currentUser: req.session.currentUser
+        })
+    })
+})
+
+// DELETE
+messages.delete('/:id', (req, res) => {
+    Message.findByIdAndRemove(req.params.id, (err, deletedMessage) => {
+        res.redirect('/messages')
+    })
+})
+
+// SHOW
+messages.get('/:id', (req, res) => {
+    Message.findById(req.params.id, (error, foundMessage) => {
+        res.render('messages/show.ejs', {
+            Message: foundMessage,
+            currentUser: req.session.currentUser
+        })
+    })
+})
+
+// UPDATE
+messages.put('/:id', (req, res) => {
+    Message.findByIdAndUpdate(
+        req.params.id,
+        req.body, {
+            new: true
+        },
+        (error, updatedModel) => {
+            res.redirect('/messages')
+        }
+    )
+})
+
+// CREATE
+messages.post('/', (req, res) => {
+    Message.create(req.body, (error, createdMessage) => {
+        res.redirect('/messages')
+    })
+})
+
+// INDEX
+messages.get('/', (req, res) => {
+    Message.find({}, (error, allMessages) => {
+        res.render('messages/index.ejs', {
+            messages: allMessages,
+            currentUser: req.session.currentUser
+        })
+    })
+})
 
 
 
 // SEED ROUTE
 messages.get('/setup/seed', (req, res) => {
-    Fruit.create(
+    Message.create(
         [{
                 title: 'Albert Einstein Quote',
                 message: 'Two things are infinite: the universe and human stupidity; and Im not sure about the universe.',
@@ -34,4 +97,4 @@ messages.get('/setup/seed', (req, res) => {
 })
 
 
-module.exports = fruits
+module.exports = messages

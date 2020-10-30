@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    
+  </head>
+  <body>
+    <nav>
+    
+    </nav>
+    <div class="container">
+      <h1>Messages Edit Page</h1>
+      <form action="/messages/<%=message.id%>?_method=PUT" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" name="title" value="<%=message.title%>" />
+        <label for="body">Message:</label>
+        <input type="text" name="body" value="<%=message.body%>" />
+        <label for="image">Image:</label>
+        <input type="text" name="image" value="<%=message.image%>" />
+        <br/>
+    
+        <input type="submit" value="Submit">
+      <form>
+      <button type="button" name="button">
+        <a href="/messages">Back</a>
+      </button>
+    </div>
+  </body>
+</html>
