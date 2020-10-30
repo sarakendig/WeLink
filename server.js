@@ -73,6 +73,10 @@ app.use(
 const messagesController = require('./controllers/messages_controller.js')
 app.use('/messages', messagesController)
 
+
+const usersController = require('./controllers/users_controller.js')
+app.use('/users', usersController)
+
 //___________________
 // Routes
 //___________________
