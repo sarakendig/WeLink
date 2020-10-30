@@ -9,6 +9,7 @@ const messageSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    image: String,
 })
 
 const Message = mongoose.model('Message', messageSchema)

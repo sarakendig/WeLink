@@ -67,6 +67,13 @@ app.use(
 )
 
 //___________________
+// Controllers
+//___________________
+
+const messagesController = require('./controllers/messages_controller.js')
+app.use('/messages', messagesController)
+
+//___________________
 // Routes
 //___________________
 //localhost:3000
