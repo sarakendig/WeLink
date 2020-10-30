@@ -77,6 +77,9 @@ app.use('/messages', messagesController)
 const usersController = require('./controllers/users_controller.js')
 app.use('/users', usersController)
 
+const sessionsController = require('./controllers/sessions_controller.js')
+app.use('/sessions', sessionsController)
+
 //___________________
 // Routes
 //___________________
