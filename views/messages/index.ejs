@@ -9,19 +9,20 @@
     <nav>
         <%- include ('../partials/nav.ejs') %>
     </nav>
+    <main>
   <div class="container">
 
-    <h1>MessageBoard Index</h1>
-    <ul>
+    <h1><i class="large material-icons">mode_comment</i>Board</h1>
+    <ul class="collection">
       <% for (let message of messages ) { %>
-      <li>
-        <a href="/messages/<%=message._id%>">
-          <%= message.title %>
+        <li class="collection-item"><%= message.title %>
+        <a href="/messages/<%=message._id%>" class="secondary-content">
+          <i class="material-icons light-green-text text-darken-4">send</i></a>
       </li>
       <% } %>
     </ul>
   </div>
-
+</main>
   <footer>
     <%- include ('../partials/footer.ejs') %>
   </footer>

@@ -11,9 +11,6 @@ const session = require('express-session');
 require('dotenv').config()
 
 
-// Socket
-const http = require("http").createServer();
-const io = require("socket.io")(http);
 
 
 //___________________
@@ -25,6 +22,7 @@ const PORT = process.env.PORT;
 //___________________
 //Database
 //___________________
+
 // How to connect to the database either via heroku or locally
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/WeLink';
 
@@ -36,7 +34,7 @@ mongoose.connect(
         useFindAndModify: false
     },
     () => {
-        console.log('the connection with mongod is established at', mongodb_URI)
+        console.log('the connection with mongod is established at', MONGODB_URI)
     }
 )
 
@@ -47,6 +45,7 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 
 // open the connection to mongo
 db.on('open', () => {});
+
 
 //___________________
 //Middleware
@@ -87,13 +86,8 @@ app.use('/users', usersController)
 const sessionsController = require('./controllers/sessions_controller.js')
 app.use('/sessions', sessionsController)
 
-const chatsController = require('./controllers/chats_controller.js')
-app.use('/chats', chatController)
-
-
-//___________________
-// SOCKET
-//___________________
+// const chatsController = require('./controllers/chats_controller.js')
+// app.use('/chats', chatsController)
 
 
 
@@ -109,6 +103,12 @@ app.get('/messages', (req, res) => {
 //___________________
 //Listener
 //___________________
+
+
+// server.listen(PORT, () => {
+//     console.log('💻 Listening on port 🔥', server.address().port);
+// });
+
 app.listen(PORT, () => {
     console.log('💻 Listening on port 🔥', PORT)
 })

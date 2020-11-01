@@ -10,6 +10,16 @@ const isAuthenticated = (req, res, next) => {
     }
 }
 
+// INDEX
+messages.get('/', (req, res) => {
+    Message.find({}, (error, allMessages) => {
+        res.render('messages/index.ejs', {
+            messages: allMessages,
+            currentUser: req.session.currentUser
+        })
+    })
+})
+
 // NEW
 messages.get('/new', (req, res) => {
     res.render(
@@ -69,15 +79,6 @@ messages.post('/', (req, res) => {
     })
 })
 
-// INDEX
-messages.get('/', (req, res) => {
-    Message.find({}, (error, allMessages) => {
-        res.render('messages/index.ejs', {
-            messages: allMessages,
-            currentUser: req.session.currentUser
-        })
-    })
-})
 
 
 
@@ -87,24 +88,23 @@ messages.get('/setup/seed', (req, res) => {
         [{
                 title: 'Albert Einstein Quote',
                 message: 'Two things are infinite: the universe and human stupidity; and Im not sure about the universe.',
-                image: null,
+                image: '',
             },
             {
                 title: 'Cute dog by the ocean',
-                message: null,
+                message: 'Check out this adorable pup',
                 image: 'https://www.photoblog.com/learn/wp-content/uploads/2019/08/cute-dog-outdoors-990x556.jpg',
             },
             {
                 title: 'Oh Canada',
                 message: 'Canadians say “sorry” so much that a law was passed in 2009 declaring that an apology can’t be used as evidence of admission to guilt.',
-                image: null,
-            }
-        ],
+                image: '',
+            }],
         (error, data) => {
-            res.redirect('/messages')
+            res.redirect('/messages');
         }
     )
-})
+});
 
 
-module.exports = messages
+module.exports = messages;
