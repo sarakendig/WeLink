@@ -9,6 +9,13 @@ const db = mongoose.connection;
 const session = require('express-session');
 
 require('dotenv').config()
+
+
+// Socket
+const http = require("http").createServer();
+const io = require("socket.io")(http);
+
+
 //___________________
 //Port
 //___________________
@@ -80,10 +87,21 @@ app.use('/users', usersController)
 const sessionsController = require('./controllers/sessions_controller.js')
 app.use('/sessions', sessionsController)
 
+const chatsController = require('./controllers/chats_controller.js')
+app.use('/chats', chatController)
+
+
+//___________________
+// SOCKET
+//___________________
+
+
+
+
 //___________________
 // Routes
 //___________________
-//localhost:3005
+//localhost:3004
 app.get('/messages', (req, res) => {
     res.send('Hello 🌎! ');
 });
