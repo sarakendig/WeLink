@@ -10,7 +10,8 @@
             <%- include ('../partials/nav.ejs') %>
         </nav>
     <div class="container">
-        <h1>Messages New Page</h1>
+        <h1>New <i class="large material-icons">mail</i></h1>
+        <br>
         <form action="/messages" method="POST">
             <label for="title">Title:</label>
             <input type="text" name="title" required />
@@ -19,11 +20,18 @@
             <label for="image">Image:</label>
             <input type="text" name="image" />
             <br />
-            
-            <input type="submit" value="Submit">
+            <br>
+            <button class="btn black waves-effect waves-green btn-large" type="submit" name="submit">
+                <i class="material-icons left">send</i> Submit
+              </button>
+           
             <form>
+                <button class="btn black waves-effect waves-green btn-large" type="button" name="button">
+                    <a class="white-text" href="/messages">Back<i
+                        class="material-icons left">arrow_back</i></a>
+                </button>
     </div>
-
+<br>
     <footer>
         <%- include ('../partials/footer.ejs') %>
       </footer>
