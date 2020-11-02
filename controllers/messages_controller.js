@@ -11,7 +11,7 @@ const isAuthenticated = (req, res, next) => {
 }
 
 // INDEX
-messages.get('/', (req, res) => {
+messages.get('/messages', (req, res) => {
     Message.find({}, (error, allMessages) => {
         res.render('messages/index.ejs', {
             messages: allMessages,
