@@ -86,9 +86,6 @@ app.use('/users', usersController)
 const sessionsController = require('./controllers/sessions_controller.js')
 app.use('/sessions', sessionsController)
 
-// const chatsController = require('./controllers/chats_controller.js')
-// app.use('/chats', chatsController)
-
 
 
 
@@ -104,10 +101,6 @@ app.get('/messages', (req, res) => {
 //Listener
 //___________________
 
-
-// server.listen(PORT, () => {
-//     console.log('💻 Listening on port 🔥', server.address().port);
-// });
 
 app.listen(PORT, () => {
     console.log('💻 Listening on port 🔥', PORT)
