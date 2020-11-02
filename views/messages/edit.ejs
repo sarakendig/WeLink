@@ -10,7 +10,7 @@
     <%- include ('../partials/nav.ejs') %>
   </nav>
   <div class="container">
-    <h1>Edit <i class="material-icons left">edit</i></h1>
+    <h1>Edit <i class="material-icons large">edit</i></h1><br>
 
     <form action="/messages/<%=message.id%>?_method=PUT" method="POST">
       <label class="black-text" for="title">
@@ -26,7 +26,7 @@
       </label>
       <input type="text" name="image" value="<%=message.image%>" />
       <br />
-
+<br>
       <button class="btn black waves-effect waves-green btn-large" type="submit" name="submit">
         <i class="material-icons left">send</i> Submit
       </button>
@@ -35,7 +35,7 @@
           <a class="white-text" href="/messages">Back<i class="material-icons left">arrow_back</i></a>
         </button>
   </div>
-
+<br>
   <footer>
     <%- include ('../partials/footer.ejs') %>
   </footer>

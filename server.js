@@ -17,7 +17,7 @@ require('dotenv').config()
 //Port
 //___________________
 // Allow use of Heroku's port or your own local port, depending on the environment
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3004;
 
 //___________________
 //Database
