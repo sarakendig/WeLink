@@ -1,33 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <%- include ('../partials/head.ejs') %>
+
+<head>
+  <%- include ('../partials/head.ejs') %>
 </head>
 
 <body>
-    <nav>
-        <%- include ('../partials/nav.ejs') %>
-    </nav>
-    <div class="container">
-      <h1>Messages Edit Page</h1>
-      <form action="/messages/<%=message.id%>?_method=PUT" method="POST">
-        <label for="title">Title:</label>
-        <input type="text" name="title" value="<%=message.title%>" />
-        <label for="body">Message:</label>
-        <input type="text" name="body" value="<%=message.body%>" />
-        <label for="image">Image:</label>
-        <input type="text" name="image" value="<%=message.image%>" />
-        <br/>
-    
-        <input type="submit" value="Submit">
-      <form>
-      <button type="button" name="button">
-        <a href="/messages">Back</a>
-      </button>
-    </div>
+  <nav>
+    <%- include ('../partials/nav.ejs') %>
+  </nav>
+  <div class="container">
+    <h1>Edit <i class="material-icons left">edit</i></h1>
 
-    <footer>
-      <%- include ('../partials/footer.ejs') %>
-    </footer>
-  </body>
+    <form action="/messages/<%=message.id%>?_method=PUT" method="POST">
+      <label class="black-text" for="title">
+        <h5>Title:</h5>
+      </label>
+      <input type="text" name="title" value="<%=message.title%>" />
+      <label class="black-text" for="body">
+        <h5>Message:</h5>
+      </label>
+      <input type="text" name="body" value="<%=message.body%>" />
+      <label class="black-text" for="image">
+        <h5>Image Link:</h5>
+      </label>
+      <input type="text" name="image" value="<%=message.image%>" />
+      <br />
+
+      <button class="btn black waves-effect waves-green btn-large" type="submit" name="submit">
+        <i class="material-icons left">send</i> Submit
+      </button>
+      <form>
+        <button class="btn black waves-effect waves-green btn-large" type="button" name="button">
+          <a class="white-text" href="/messages">Back<i class="material-icons left">arrow_back</i></a>
+        </button>
+  </div>
+
+  <footer>
+    <%- include ('../partials/footer.ejs') %>
+  </footer>
+</body>
+
 </html>

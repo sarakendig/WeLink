@@ -10,28 +10,57 @@
         <%- include ('../partials/nav.ejs') %>
     </nav>
     <div class="container">
-        <h1>Message Show Page</h1>
-        <h3> <%=message.title%> </h3>
-        <p><%=message.body%></p>
-        <img src="<%=message.image%>">
 
 
-        <br>
-        <button type="button" name="button"><a href="/messages/<%=message._id%>/edit">Edit</a></button>
-        <br>
-        <br>
-        <form action="/messages/<%=message._id%>?_method=DELETE" method="POST">
-            <input type="submit" value="DELETE" />
-        </form>
-        <br>
-        <button type="button" name="button">
-            <a href="/messages">Back</a>
-        </button>
+
+
+        <div class="center">
+            <h1 class=""><%=message.title%></h1>
+
+
+
+
+        <div class="row valign-wrapper">
+            <div class="col s12 offset-s1 valign">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="<%=message.image%>">
+                    </div>
+                    <div class="card-content">
+                        <p class="flow-text"><%=message.body%></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row valign-wrapper">
+            <div class="col s12 offset-s3 valign">
+            <div class="col sm-4">
+                <button class="btn black waves-effect waves-green btn-large" type="button" name="button"><a
+                        class="white-text" href="/messages/<%=message._id%>/edit">Edit<i
+                        class="material-icons left">edit</i></a></button>
+            </div>
+            <div class="col sm-4">
+                <form action="/messages/<%=message._id%>?_method=DELETE" method="POST">
+                    <button class="btn red darken-1 waves-effect waves-red btn-large" type="submit" name="delete">
+                        <i class="material-icons left">delete</i> Delete
+                    </button>
+                </form>
+            </div>
+            <div class="col sm-4">
+                <button class="btn black waves-effect waves-green btn-large" type="button" name="button">
+                    <a class="white-text" href="/messages">Back<i
+                        class="material-icons left">arrow_back</i></a>
+                </button>
+            </div>
+        </div>
+        </div>
+
+   </div>
     </div>
-
     <footer>
         <%- include ('../partials/footer.ejs') %>
-      </footer>
+    </footer>
 </body>
 
 </html>
