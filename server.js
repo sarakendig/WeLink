@@ -93,9 +93,9 @@ app.use('/sessions', sessionsController)
 // Routes
 //___________________
 //localhost:3004
-// app.get('/', (req, res) => {
-//     res.send('Hello 🌎! ');
-// });
+app.get('/', (req, res) => {
+    res.send('Hello 🌎! ');
+});
 
 //___________________
 //Listener
