@@ -10,17 +10,19 @@
             <%- include ('../partials/nav.ejs') %>
         </nav>
     <div class="container">
-        <h1>Log In</h1>
+        <h1>Log In  <i class="material-icons large">verified_user</i></h1><br>
         <form action="/sessions" method="POST">
-            <label for="username">User Name:</label>
+            <label class="black-text" for="username"><h5>User Name:</h5></label>
             <input type="text" name="username" required />
-            <label for="password">Password:</label>
+            <label class="black-text" for="password"><h5>Password:</h5></label>
             <input type="password" name="password" />
-            <br>
-            <input type="submit" value="Submit">
+            <br><br>
+            <button class="btn black waves-effect waves-green btn-large" type="submit" name="submit">
+                <i class="material-icons left">send</i> Submit
+              </button>
             <form>
     </div>
-
+<br>
     <footer>
         <%- include ('../partials/footer.ejs') %>
       </footer>
