@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>WeLink</title>
+    <!-- Import Google Icon Font -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+
+<head>
+    <%- include ('../partials/head.ejs') %>
+</head>
+
+<body>
+
+    <nav>
+        <%- include ('../partials/nav.ejs') %>
+    </nav>
+
+    <div class="container">
+        <div class="row valign wrapper">
+
+            <!-- <div class="col s6">
+                <h3>Active Users</h3>
+                <ul id="user-box"></ul>
+
+            </div> -->
+
+
+            <!-- <div class="col s6"> -->
+                <h2>Messages</h2>
+                <ul id="message-box">
+                </ul>
+
+                <form action="">
+                    <input autocomplete="off" id="message-input" />
+                    <button class="btn waves-effect waves-light" type="submit" id="send-button">Send
+                        <i class="material-icons right">send</i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            const socket = io()
+            $('form').submit(e => {
+                e.preventDefault()
+                socket.emit('chat', $('#message-input').val())
+                $('#message-input').val('')
+                return false;
+            })
+
+            socket.on('chat', msg => {
+                $('#message-box').append($('<li>').text(msg))
+            })
+
+            socket.on("sessiondata", data => {
+                console.info("sessiondata event received. Check the console");
+                console.info("sessiondata is ", data);
+                
+            });
+
+
+            socket.on('login', msg => {
+                console.info("logged_in event received. Check the console");
+                console.info("sessiondata after logged_in event is ", data);
+                $('#user-box').append($('<li>').text(currentUser.username));
+                $('#message-box').append($('<li>').text(msg));
+            })
+
+            socket.on('logout', msg => {
+                $('#message-box').append($('<li>').text(msg));
+            })
+
+            socket.on("checksession", data => {
+                console.info("checksession event received. Check the console");
+                console.info("sessiondata after checksession event is ", data);
+            })
+
+
+        });
+    </script>
+
+    <footer>
+        <%- include ('../partials/footer.ejs') %>
+    </footer>
+</body>
+
+</html>
