@@ -1,12 +1,9 @@
-<<<<<<< HEAD
-# WeLink2
-=======
 # WeLink
 
 
 
 ## Application
-[Click Here](https://epic-jackson-af0413.netlify.app/#)
+[Click Here](https://welinkk.herokuapp.com/)
 
 
 ## What is it?
@@ -35,4 +32,13 @@ This application uses socket.io to implement the real-time messaging between use
 * Ability to post new messages
 * Unable to see full message views unless logged-in
 
->>>>>>> d834ad803ef39ce66a6dcac4062d03983551e131
+
+
+## What I'd Like to Add 
+- [ ] Add an Active Users side bar in the chat room
+- [ ] Add video chat capability
+- [ ] Have separate rooms using Socket.io
+- [ ] Configure private messaging
+- [ ] Commenting
+
+
